@@ -65,10 +65,18 @@
                                             <a class="dropdown-item" href="/exam/{{ $exam->id }}"><i
                                                     class="bx  mr-2"></i> View Questions</a>
 
+                                                    <a class="dropdown-item" href="#" data-toggle="modal"
+                                                    data-target="#editExaModal{{ $exam->id }}"><i
+                                                        class="bx  mr-2"></i> Edit</a>
+
+                                                        <a class="dropdown-item" href="/exam/delete/{{$exam->id}}"  onclick="return confirm('confirm you want to delete this record ?')"><i
+                                                        class="bx  mr-2"></i> Delete</a>
+
                                         </div>
                                     </div>
                                 </td>
                             </tr>
+                            @include('exams.editModal')
                             @include('exams.questionModal')
                         @endforeach
 

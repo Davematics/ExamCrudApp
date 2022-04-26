@@ -91,8 +91,7 @@ $('[data-toggle="tooltip"]').tooltip();
       });
     </script> --}}
 
-@include('js.addExamJs')
-@include('js.addQuestionJs')
+
 
 
 

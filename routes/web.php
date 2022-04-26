@@ -26,3 +26,6 @@ Route::get('/', function () {
 Route::resource('/exam', ExamController::class);
 
 Route::resource('/questions', QuestionController::class);
+
+Route::get('/exam/delete/{id}', [ExamController::class, 'destroy']);
+

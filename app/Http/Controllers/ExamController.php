@@ -46,7 +46,7 @@ class ExamController extends Controller
         $exam->subject = $request->subject;
         $exam->instructions = $request->instructions;
         $exam->save();
-        return response()->json(['success' => 'Successfully']);
+        return redirect()->back()->with('success', 'Exam added successfully');
 
     }
 
@@ -81,9 +81,18 @@ class ExamController extends Controller
      * @param  \App\Models\Exam  $exam
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateExamRequest $request, Exam $exam)
+    public function update(Request $request, Exam $exam)
     {
-        //
+        $request->validate([
+            'subject' => 'required',
+            'instructions' => 'required',
+        ]);
+       // $exam = Exam();
+        $exam->subject = $request->subject;
+        $exam->instructions = $request->instructions;
+        $exam->save();
+        return redirect()->back()->with('success', 'record updated successfully');
+
     }
 
     /**
@@ -92,9 +101,10 @@ class ExamController extends Controller
      * @param  \App\Models\Exam  $exam
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Exam $exam)
+    public function destroy($id)
     {
-        //
+        Exam::where('id',$id)->first()->delete();
+        return redirect()->back()->with('success', 'record deleted successfully');
     }
 
 }
